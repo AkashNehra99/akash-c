@@ -1,3 +1,4 @@
+// Program to check the entered character is vowel or not
 #include<stdio.h>
 #include<conio.h>
 void main()
