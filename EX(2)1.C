@@ -1,5 +1,5 @@
-// write a menu driven program to implement basic arithmetic functions
-// using switch and functions
+// Write a menu driven program to implement basic arithmetic functions
+// Using Switch-case and Functions
 
 #include<stdio.h>
 #include<conio.h>
