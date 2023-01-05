@@ -1,0 +1,29 @@
+// Disarium
+// A number is said to be Disarium if the sum of its digits raised to their respective positions is the number itself.
+
+#include<stdio.h>
+#include<math.h>
+int main() 
+{
+    int n,x,d,c=0,sum=0;
+    scanf("%d",&n);
+    x=n;
+    while(x>0)
+    {   c++;
+        x=x/10;
+    }
+    x=n;
+    while(x>0)
+    {
+        d=x%10;
+        sum+=pow(d,c);
+        x=x/10;
+        c--;
+    }
+    if(n==sum)
+        printf("%d",1);
+    else 
+        printf("%d",0);
+    
+    return 0;
+}
