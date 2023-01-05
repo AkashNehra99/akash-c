@@ -1,0 +1,22 @@
+//Niven numbers are positive integers greater than 0 that are divisible by the sum of their digits.
+//Print 1 if entered number is Niven, otherwise 0.
+
+#include <stdio.h>
+int main() 
+{
+    int n,x,d,sum=0;
+    scanf("%d",&n);
+    x=n;
+    while(x!=0)
+    {
+        d=x%10;
+        sum+=d;
+        x=x/10;
+    }
+    if(n%sum==0)
+        printf("%d",1);
+    else
+        printf("%d",0);
+    
+    return 0;
+}
