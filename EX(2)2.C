@@ -1,3 +1,5 @@
+// Menu driven program using switch case 
+// Program for Factorial,power(), sum of digits using functions 
 #include<stdio.h>
 #include<conio.h>
 void main()
