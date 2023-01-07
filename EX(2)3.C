@@ -1,4 +1,5 @@
-// Write a menu driven program to check whether a given number is prime and Armstrong using switch and functions
+// Write a menu driven program to check whether a given number is (prime) or (Armstrong) using switch and functions
+
 #include<stdio.h>
 #include<conio.h>
 #include<math.h>
