@@ -1,5 +1,5 @@
-// AKASH NEHRA
 // WAP to calculate the insurance based upon the given condition
+
 #include<stdio.h>
 #include<conio.h>
 #include<process.h>
