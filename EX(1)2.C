@@ -1,4 +1,5 @@
-// WAP to check whether the given number is even or odd
+// Program to check whether the given number is even or odd
+
 #include<stdio.h>
 #include<conio.h>
 void main()
