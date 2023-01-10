@@ -1,4 +1,4 @@
-// Program to print triangular star pattern
+// Program to print Triangular Star Pattern using loops
 
 #include<stdio.h>
 #include<conio.h>
