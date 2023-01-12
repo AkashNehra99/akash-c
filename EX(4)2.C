@@ -1,3 +1,5 @@
+// Program to convert decimal to hexadecimal or vice versa.
+
 #include<stdio.h>
 #include<conio.h>
 void main()
