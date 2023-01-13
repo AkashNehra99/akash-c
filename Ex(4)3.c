@@ -1,4 +1,4 @@
-// Program to convert ocatal to hexadecimal and vice versa
+// Program to convert ocatal to hexadecimal and vice versa.
 
 #include<stdio.h>
 #include<conio.h>
