@@ -1,3 +1,5 @@
+// is_armstrong
+
 #include<stdio.h>
 #include<conio.h>
 void main()
