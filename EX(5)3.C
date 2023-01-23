@@ -6,11 +6,11 @@ void main()
 {
     int n,r,Ans;
     int nCr(int,int);
-    printf("Enter the vlaue of n\n");
+    printf("Enter the vlaue of n: ");
     scanf("%d",&n);
-    printf("Enter the value of r\n");
+    printf("Enter the value of r: ");
     scanf("%d",&r);
-    Ans=nCr(int n,int r);
+    Ans=nCr(n,r);
     printf("%d",Ans);
     getch();
 }
