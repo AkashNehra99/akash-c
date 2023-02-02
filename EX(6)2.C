@@ -1,3 +1,5 @@
+//fib(n) using recursive function 
+
 #include<stdio.h>
 #include<conio.h>
 void main()
