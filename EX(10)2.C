@@ -17,5 +17,6 @@ void main()
     {
       sum+=*(b++);
     }
+    printf("\n%d",sum);
     getch();
 }
