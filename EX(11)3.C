@@ -1,4 +1,5 @@
 // to copy of one string to another
+
 #include<stdio.h>
 #include<conio.h>
 #include<string.h>
