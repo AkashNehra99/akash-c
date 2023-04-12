@@ -181,6 +181,14 @@ void insert_after(node **start,int item)
   temp->next=loc->next;
   loc->next=temp;
 }
+void deleteafter(node **start,int item)
+{
+  node *loc,*temp;
+  loc=search(start,item);
+  temp=loc->next;
+  loc->next=temp->next;
+  free(temp);
+}
 
 
 
