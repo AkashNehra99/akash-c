@@ -1,3 +1,5 @@
+// Implementation of Stack
+
 #define MAX 10
 #include<stdio.h>
 #include<conio.h>
