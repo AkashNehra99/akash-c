@@ -1,3 +1,5 @@
+// Polynomial addition program
+
 #include<stdio.h>
 #include<conio.h>
 typedef struct POLY
