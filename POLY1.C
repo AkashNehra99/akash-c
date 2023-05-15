@@ -73,7 +73,7 @@ void traversing(poly *head)
 void addition(poly **h3,poly *h1,poly *h2)
 {
   poly *t;
-  while((h1!=NULL)&&(h2!=NULL))
+  while(h1!=NULL && h2!=NULL)
   {
    if(h1->power==h2->power)
    {
