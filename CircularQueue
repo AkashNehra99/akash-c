@@ -1,0 +1,102 @@
+// To implement Circular Queue using Array
+
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 10
+typedef struct queuetype{
+    int a[MAX];
+    int front,rear;
+}QUEUE;
+void main()
+{
+    QUEUE Q;
+    int ch,item;
+    void enqueue(QUEUE *,int);
+    void dequeue(QUEUE *);
+    void display(QUEUE *);
+    int isunderflow(QUEUE *);
+    int isoverflow(QUEUE *);
+    Q.front=Q.rear=-1;
+    while(1)
+    {
+        printf("1.Insert element in queue  2. Delete element  3.Display Queue  4.Exit\n");
+        printf("Enter choice: ");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1: printf("Enter item: ");
+                    scanf("%d",&item);
+                    enqueue(&Q,item);
+                    break;
+            case 2: dequeue(&Q);
+                    break;
+            case 3: display(&Q);
+                    break;
+            case 4: exit(1);
+            default: printf("Invalid choice\n");
+        }
+    }
+}
+int isunderflow(QUEUE *Q)
+{
+    if(Q->front==-1 && Q->rear==-1)
+       return 1;
+    else 
+       return 0;
+}
+int isoverflow(QUEUE *Q)
+{
+    if((Q->rear+1)%MAX == Q->front)
+      return 1;
+    else 
+      return 0;
+}
+void enqueue(QUEUE *Q,int item)
+{
+    if(isoverflow(Q))
+      printf("Queue is full");
+    else if(isunderflow(Q))
+    {
+        Q->front = 0;
+        Q->rear = 0;
+    }
+    else{
+        Q->rear = (Q->rear+1)%MAX;
+    }
+    Q->a[Q->rear] = item;
+    printf("%d is inserted in queue\n",item);
+}
+void display(QUEUE *Q)
+{
+    if(isunderflow(Q))
+    {
+        printf("Queue is empty\n");
+        return;
+    }
+    printf("Circular Queue is: ");
+    while(Q->front != (Q->rear+1)%MAX)
+    {
+        printf("%d  ",Q->a[Q->front]);
+        Q->front=(Q->front+1)%MAX;
+    }
+    printf("\n");
+}
+void dequeue(QUEUE *Q)
+{
+    if(isunderflow(Q))
+    {
+        printf("Queue is empty\n");
+        return;
+    }
+    else if(Q->front == Q->rear)
+    {
+        printf("%d is deleted from queue\n",Q->a[Q->front]);
+        Q->front = -1;
+        Q->rear =-1;
+    }
+    else
+    {
+        printf("%d is deleted from queue\n",Q->a[Q->front]);
+        Q->front = (Q->front+1)%MAX;
+    }
+}
