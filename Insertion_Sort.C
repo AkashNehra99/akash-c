@@ -18,16 +18,16 @@ void main()
 void insertionsort(int a[],int n)
 {
   int i,key,j;
-  for(i=1;i<n;i++)
+  for(j=1;j<n;j++)
   {
-    key=a[i];
-    j=i-1;
-    while(j>=0&&a[j]>key)
+    key=a[j];
+    i=j-1;
+    while(i>=0&&a[i]>key)
     {
-      a[j+1]=a[j];
-      j=j-1;
+      a[i+1]=a[i];
+      i=i-1;
     }
-    a[j+1]=key;
+    a[i+1]=key;
   }
 }
 void display(int a[],int n)
