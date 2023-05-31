@@ -77,7 +77,7 @@ int determineheight(BST *tree)
   else
   {
     lh = determineheight(tree->left);
-    rh = determineheight(tree->left);
+    rh = determineheight(tree->right);
     if(lh>rh)
       return ++lh;
     else
