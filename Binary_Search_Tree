@@ -1,0 +1,223 @@
+// Tree by Prashant Sir
+
+#include<stdio.h>
+#include<alloc.h>
+#include<conio.h>
+#include<stdlib.h>
+typedef struct BST_node
+{
+	struct BST_node *left;
+	int item;
+	struct BST_node *right;
+
+}BST;
+void insertelement(BST **tree, int element)
+{
+	if(*tree==NULL)
+	{
+	*tree=(BST*)malloc(sizeof(BST));
+	(*tree)->item=element;
+	(*tree)->right=(*tree)->left=NULL;
+	}
+	else
+	{
+		if(element<(*tree)->item)
+			insertelement(&((*tree)->left),element);
+		else
+			insertelement(&((*tree)->right),element);
+
+	}
+}
+void preordertraversal(BST *h)
+{
+	if(h!=NULL)
+	{
+		printf("%d ",h->item);
+		preordertraversal(h->left);
+		preordertraversal(h->right);
+	}
+}
+void postordertraversal(BST *h)
+{
+	if(h!=NULL)
+	{
+
+		postordertraversal(h->left);
+		postordertraversal(h->right);
+		printf("%d ",h->item);
+	}
+}
+void inordertraversal(BST *h)
+{
+	if(h!=NULL)
+	{
+
+		inordertraversal(h->left);
+		printf("%d ",h->item);
+		inordertraversal(h->right);
+
+	}
+}
+BST * findsmallestelement(BST *tree)
+{
+	if((tree==NULL)||((tree->left)==NULL))
+		return tree;
+	else
+		return findsmallestelement(tree->left);
+}
+BST * findgreatestelement(BST *tree)
+{
+	if((tree==NULL)||((tree->right)==NULL))
+		return tree;
+	else
+		return findgreatestelement(tree->right);
+}
+int totalnode(BST *tree)
+{
+	if(tree==NULL)
+		return 0;
+	else
+		return(totalnode(tree->left)+totalnode(tree->right)+1);
+}
+int leafnode(BST *tree)
+{
+	if(tree==NULL)
+		return 0;
+	else if((tree->left==NULL)&&(tree->right==NULL))
+		return 1;
+	else
+		return(totalnode(tree->left)+totalnode(tree->right));
+}
+
+int nonleafnode(BST *tree)
+{
+	if((tree==NULL)||((tree->left==NULL)&&(tree->right==NULL)))
+		return 0;
+	else
+		return(totalnode(tree->left)+totalnode(tree->right)+1);
+}
+int determineheight(BST *tree)
+{
+	int lh,rh;
+	if(tree==NULL)
+		return 0;
+	else
+	{
+		lh=determineheight(tree->left);
+		rh=determineheight(tree->right);
+		if(lh>rh)
+			return ++lh;
+		else
+			return ++rh;
+	}
+}
+void deletenode(BST **tree,int element)
+{
+	BST *temp;
+	if( *tree==NULL)
+	{
+		printf("element not found in BST");
+
+	}
+	else if(element < (*tree)->item)
+		deletenode(&((*tree)->left),element);
+	else if(element > (*tree)->item)
+		deletenode(&((*tree)->right),element);
+	else if( (*tree)->left && (*tree)->right )
+	{
+		temp=findgreatestelement((*tree)->left);
+		(*tree)->item=temp->item;
+		deletenode(&((*tree)->left),temp->item);
+	}
+	else
+	{
+		temp=*tree;
+		if(((*tree)->left==NULL)&&((*tree)->right==NULL))
+			*tree=NULL;
+		else if((*tree)->left!=NULL)
+			*tree=(*tree)->left;
+		else
+			*tree = (*tree)->right;
+		free(temp);
+	}
+
+}
+
+void main()
+{
+	int ch,element;
+	BST *root=NULL;
+	BST *loc;
+	while(1)
+	{
+		clrscr();
+		printf("1. Insertion\n");
+
+		printf("2. In order travesal\n");
+		printf("3. Pre order travesal\n");
+		printf("4. Post order travesal\n");
+		printf("5. find minimum\n");
+		printf("6. find maximum\n");
+		printf("7. calculate heightm\n");
+		printf("8. deletion\n");
+		printf("9. count leaf node\n");
+		printf("10. count  non leaf node");
+		printf("11. count total node:");
+		printf("12. Exit");
+		printf("enter choice");
+		scanf("%d",&ch);
+		switch(ch)
+		{
+			case 1: printf("enter element to be insert");
+			scanf("%d",&element);
+			insertelement(&root,element);
+			break;
+
+			case 2:
+				if(root==NULL)
+					printf("tree is empty");
+				else
+					inordertraversal(root);
+				break;
+			case 3:
+				if(root==NULL)
+					printf("tree is empty");
+				else
+					postordertraversal(root);
+				break;
+			case 4:
+				if(root==NULL)
+					printf("tree is empty");
+				else
+					preordertraversal(root);
+				break;
+			case 5:
+				loc=findsmallestelement(root);
+				printf("%d ",loc->item);
+				break;
+			case 6:
+				loc=findgreatestelement(root);
+				printf("%d ",loc->item);
+
+				break;
+			case 7:
+				printf("%d ",determineheight(root));
+				break;
+			case 8:
+				printf(" element to be delete ");
+				scanf("%d",&element);
+				deletenode(&root,element);
+				break;
+			case 9:printf("number of leaf node %d",leafnode(root));
+				break;
+			case 10:printf("number of non leaf node %d",nonleafnode(root));
+				break;
+			case 11:printf("number of total node %d",totalnode(root));
+				break;
+
+			case 12: exit(1);
+		}
+		getch();
+	}
+}
+
