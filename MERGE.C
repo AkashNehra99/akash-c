@@ -1,16 +1,16 @@
 #include<stdio.h>
 #include<conio.h>
-void printArray(int [],int);
-void Merge(int [], int,int,int);
-void MergeSort(int[], int,int);
 void MergeSort(int A[],int p,int r)
 {
   int q;
+  void Merge(int [], int,int,int);
   if(p<r)
-      q=(p+r)/2;
+  {
+  q=(p+r)/2;
   MergeSort(A,p,q);
   MergeSort(A,q+1,r);
   Merge(A,p,q,r);
+  }
 }
 
 void Merge(int A[],int p,int q,int r)
@@ -31,26 +31,21 @@ void Merge(int A[],int p,int q,int r)
   {
     if(L[i] <= R[j]){
       A[k] = L[i];
-      i = i+1;
+      i = i++;
       }
   else{
     A[k] = R[j];
-    j = j+1;
+    j = j++;
    }
   }
   //printArray(int A[],int n);
-}
-void printArray(int A[],int n)
-{
-  int i;
-  for(i=1; i<=n; i++)
-	printf("%d",A[i]);
 }
 
 void main()
 {
   int i,n,p,r;
   int A[20];
+  clrscr();
   printf("Enter the size of the Array: ");
   scanf("%d",&n);
   p=1;
@@ -59,9 +54,11 @@ void main()
     scanf("%d",&A[i]);
   printf("Array is: ");
   for(i=1; i<=n; i++)
-	printf("%d\t",A[i]);
-
+	printf("%d  ",A[i]);
+  printf("\n");
+  printf("After merge sort: ");
   MergeSort(A,p,r);
-  printArray(A,n);
+    for(i=1; i<=n; i++)
+	printf("%d  ",A[i]);
   getch();
 }
